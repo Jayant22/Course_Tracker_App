@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import Button from '../../UI/Button/Button';
-import './CourseInput.module.css';
+import styles from './CourseInput.module.css';
 
+// eslint-disable-next-line
 const FormControl = styled.div`
   margin: 0.5rem 0;
 
@@ -11,7 +12,7 @@ const FormControl = styled.div`
     font-weight: bold;
     display: block;
     margin-bottom: 0.5rem;
-    color: ${props => props.invalid ? 'red' : 'black'};
+    color: ${(props) => (props.invalid ? 'red' : 'black')};
   }
 
   & input {
@@ -62,10 +63,10 @@ const CourseInput = (props) => {
 
   return (
     <form onSubmit={formSubmitHandler}>
-      <FormControl invalid={!isValid}>
+      <div className={`${styles['form-control']} ${!isValid && styles.invalid}`}>
         <label>Course Goal</label>
         <input type='text' onChange={goalInputChangeHandler} />
-      </FormControl>
+      </div>
       <Button type='submit'>Add Goal</Button>
     </form>
   );
